@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 use App\Models\Chat;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
+    //get all user excpet the user himself (can be moved to User Controller if you want)
+    public function getAllUser(Request $request){
+
+        //variables that uses $request without validation
+        $loggedInUser = $request->loggedInUserId;
+
+        $user = User::where('id', '!=', $loggedInUser)->get();
+
+        return response($user, 200);
+    }
+
     public function sendMessage(Request $request){
 
         //variables that uses $request without validation

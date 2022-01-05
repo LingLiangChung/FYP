@@ -54,6 +54,7 @@ Route::post('/admin_register', [AdminAuthController::class,'register']);
 Route::post('/admin_login', [AdminAuthController::class,'login']);
 
 // Public routes - chat (to be moved to protected route)
+Route::post('getAllUser', [App\Http\Controllers\ChatController::class, 'getAllUser']);
 Route::post('chat/sendMessage', [App\Http\Controllers\ChatController::class, 'sendMessage']);
 Route::post('chat/getUserChat', [App\Http\Controllers\ChatController::class, 'getUserChat']);
 
