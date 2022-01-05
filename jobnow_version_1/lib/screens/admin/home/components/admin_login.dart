@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:jobnow_version_1/screens/admin/home/components/body.dart';
+import 'package:jobnow_version_1/screens/loading/splash.dart';
 
 
 class AdminLogin extends StatefulWidget {
@@ -18,7 +19,7 @@ class _AdminLoginState extends State<AdminLogin>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFAB47BC),
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(),
@@ -38,11 +39,11 @@ class _AdminLoginState extends State<AdminLogin>{
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(
-                        'Admin Login In',
+                        'Admin Login',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
                         ),
@@ -159,7 +160,7 @@ class _AdminLoginState extends State<AdminLogin>{
       if(response.statusCode==201){
         Navigator.push(context,
             MaterialPageRoute(
-                builder: (context) => Body()));
+                builder: (context) => Splash()));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content:
