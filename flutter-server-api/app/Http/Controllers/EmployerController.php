@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Employer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployerController extends Controller
@@ -13,7 +14,7 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        return Employer::all();
+        return User::where('position', 'employer')->get();
     }
 
     /**
@@ -42,7 +43,7 @@ class EmployerController extends Controller
      */
     public function show($id)
     {
-        return Employer::find($id);
+        return User::find($id);
     }
 
     /**
@@ -54,7 +55,7 @@ class EmployerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $employer = Employer::find($id);
+        $employer = User::find($id);
         $employer->update($request->all());
         return $employer;
     }
@@ -67,7 +68,7 @@ class EmployerController extends Controller
      */
     public function destroy($id)
     {
-        return Employer::destroy($id);
+        return User::destroy($id);
     }
 
     /**
@@ -78,6 +79,7 @@ class EmployerController extends Controller
      */
     public function search($name)
     {
-        return Employer::where('name', 'like', '%'.$name.'%')->get();
+        return User::where('name', 'like', '%'.$name.'%')
+                ->where('position', 'employer')->get();
     }
 }
