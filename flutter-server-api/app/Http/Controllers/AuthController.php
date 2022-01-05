@@ -20,12 +20,13 @@ class AuthController extends Controller
             'email' => 'required|string|unique:jobseekers,email',
         ]);
 
-        $jobseeker = Jobseeker::create([
+        $jobseeker = User::create([
             'name' => $fields['name'],
             'password' => bcrypt($fields['password']),
             'contact_number' => $fields['contact_number'],
             'nric' => $fields['nric'],
             'email' => $fields['email'],
+            'position' => 'jobseeker',
         ]);
 
         $token = $jobseeker->createToken('jobseekerRegisterToken')->plainTextToken;
@@ -45,7 +46,8 @@ class AuthController extends Controller
         ]);
 
         // Check email
-        $jobseeker = Jobseeker::where('name',$fields['name'])->first();
+        $jobseeker = User::where('name',$fields['name'])
+                    ->where('position','jobseeker')->first();
 
         // Check password
         if(!$jobseeker || !Hash::check($fields['password'], $jobseeker->password)){

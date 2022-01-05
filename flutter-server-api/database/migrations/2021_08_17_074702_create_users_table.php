@@ -15,9 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('admin_id');
-            $table->foreignId('employer_id');
-            $table->foreignId('jobseeker_id');
+            $table->string('name');
+            $table->string('password');
+            $table->integer('contact_number');
+            $table->integer('nric');
+            $table->string('email');
+            $table->string('position');
             $table->timestamps();
         });
     }
