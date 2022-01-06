@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Jobseeker;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JobseekerController extends Controller
@@ -13,7 +14,7 @@ class JobseekerController extends Controller
      */
     public function index()
     {
-        return Jobseeker::all();
+        return User::where('position', 'jobseeker')->get();
     }
 
     /**
@@ -42,7 +43,7 @@ class JobseekerController extends Controller
      */
     public function show($id)
     {
-        return Jobseeker::find($id);
+        return User::find($id);
     }
 
     /**
@@ -54,7 +55,7 @@ class JobseekerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $jobseeker = Jobseeker::find($id);
+        $jobseeker = User::find($id);
         $jobseeker->update($request->all());
         return $jobseeker;
     }
@@ -67,7 +68,7 @@ class JobseekerController extends Controller
      */
     public function destroy($id)
     {
-        return Jobseeker::destroy($id);
+        return User::destroy($id);
     }
 
     /**
@@ -78,6 +79,7 @@ class JobseekerController extends Controller
      */
     public function search($name)
     {
-        return Jobseeker::where('name', 'like', '%'.$name.'%')->get();
+        return User::where('name', 'like', '%'.$name.'%')
+                ->where('position', 'jobseeker')->get();
     }
 }
