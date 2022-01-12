@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employer;
+use App\Models\User;
 use Illuminate\Http\Responce;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,12 +19,13 @@ class EmployerAuthController extends Controller
             'email' => 'required|string',
         ]);
 
-        $employer = Employer::create([
+        $employer = User::create([
             'name' => $fields['name'],
             'password' => bcrypt($fields['password']),
             'contact_number' => $fields['contact_number'],
             'nric' => $fields['nric'],
             'email' => $fields['email'],
+            'position' => 'employer',
         ]);
 
         $token = $employer->createToken('employerRegisterToken')->plainTextToken;
@@ -43,7 +45,8 @@ class EmployerAuthController extends Controller
         ]);
 
         // Check email
-        $employer = Employer::where('name',$fields['name'])->first();
+        $employer = User::where('name',$fields['name'])
+                    ->where('position', 'employer')->first();
 
         // Check password
         if(!$employer || !Hash::check($fields['password'], $employer->password)){
