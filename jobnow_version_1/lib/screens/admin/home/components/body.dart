@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/job/jobs.dart';
-import 'package:jobnow_version_1/screens/admin/home/components/user/users.dart';
+import 'package:jobnow_version_1/screens/admin/home/components/user/jobseeker.dart';
 import 'employer/employers.dart';
 
 class Body extends StatelessWidget {
@@ -26,13 +26,13 @@ class Body extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-                      color: Color(0xFFFFF176),
+                      color: Colors.grey,
                       child: Center(
                         child: Text(
-                          'Name: Admin 2',
+                          'Name: Admin',
                             style: TextStyle(
                             fontSize: 20,
-                            color: Colors.black87,
+                            color: Colors.white,
                         ),
                       ),
                       ),
@@ -40,13 +40,13 @@ class Body extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-                      color: Color(0xFFFFF176),
+                      color: Colors.grey,
                       child: Center(
                         child: Text(
-                          'ID: admin_2',
+                          'ID: admin',
                             style: TextStyle(
                             fontSize: 20,
-                            color: Colors.black87,
+                            color: Colors.white,
                         ),
                       ),
                       ),
@@ -72,7 +72,7 @@ class Body extends StatelessWidget {
               height: 60,
               width: MediaQuery.of(context).size.width/3,
               decoration: BoxDecoration(
-                color: Color(0xFFAB47BC),
+                color: Colors.black,
               ),
               child: Icon(Icons.work, color: Colors.white,),
             ),
@@ -90,7 +90,7 @@ class Body extends StatelessWidget {
               height: 60,
               width: MediaQuery.of(context).size.width/3,
               decoration: BoxDecoration(
-                color: Color(0xFFAB47BC),
+                color: Colors.black,
               ),
               child: Icon(Icons.supervised_user_circle, color: Colors.white,),
             ),
@@ -108,7 +108,7 @@ class Body extends StatelessWidget {
               height: 60,
               width: MediaQuery.of(context).size.width/3,
               decoration: BoxDecoration(
-                color: Color(0xFFAB47BC),
+                color: Colors.black,
               ),
               child: Icon(Icons.supervised_user_circle_outlined, color: Colors.white,),
             ),
@@ -124,7 +124,7 @@ AppBar buildAppBar(){
     elevation: 4,
     title: Text('Admin Page'),
     centerTitle: true,
-    backgroundColor: Color(0xFFAB47BC),
+    backgroundColor: Colors.black,
     automaticallyImplyLeading: false,
   );
 }

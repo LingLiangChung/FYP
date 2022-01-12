@@ -190,7 +190,7 @@ Widget cardLogout(BuildContext context){
     onTap: (){
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => Users(),
+          builder: (context) => Login(),
         )
       );
     },
@@ -254,10 +254,8 @@ class _EmployerHomeState extends State<EmployerHome> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFFAB47BC),
-                  Color(0xFFE1BEE7),
-                  Color(0xFFE1BEE7),
-                  Color(0xFFAB47BC),
+                  Color(0x000000),
+                  Color(0xD6D4D4),
                 ]
               ),
             ),
@@ -274,7 +272,7 @@ class _EmployerHomeState extends State<EmployerHome> {
                   children: [
                     Icon(
                       Icons.person,
-                      color: Colors.white,
+                      color: Colors.black,
                       size: 40,
                     ),
                     SizedBox(width: 16,),
@@ -285,7 +283,7 @@ class _EmployerHomeState extends State<EmployerHome> {
                         Text(
                           'Hi Employer',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 30,
                             fontWeight: FontWeight.bold
                           ),
@@ -316,20 +314,20 @@ class _EmployerHomeState extends State<EmployerHome> {
         ),
       ],
       ),
-      bottomNavigationBar: Container(
-        height: 80,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: buildNavigationItems(),
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   height: 80,
+      //   decoration: const BoxDecoration(
+      //     color: Colors.white,
+      //     borderRadius: BorderRadius.only(
+      //       topLeft: Radius.circular(30),
+      //       topRight: Radius.circular(30),
+      //     ),
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: buildNavigationItems(),
+      //   ),
+      // ),
     );
   }
 

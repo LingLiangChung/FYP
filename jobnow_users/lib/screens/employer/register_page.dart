@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'employer_home.dart';
 import 'login_page.dart';
 import '../../models/jobs_model.dart';
 
@@ -71,51 +72,6 @@ class _UserRegisterState extends State<UserRegister> {
   TextEditingController contactController = TextEditingController();
   TextEditingController nricController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-
-  // register() async{
-  //   var data={
-  //     'name' : nameController.text,
-  //     'password': passController.text,
-  //     'password_confirmation': repassController.text,
-  //     'contact_number': contactController.text,
-  //     'nric': nricController.text,
-  //     'email': emailController.text,
-  //   };
-  //
-  //   var res = CallApi().postData(data, 'jobseeker_register');
-  //   var body = json.decode(res.body);
-  //   if(body['success']){
-  //     Navigator.push(context,
-  //     new MaterialPageRoute(builder: (context)=>Scaffold(
-  //       appBar: AppBar(
-  //
-  //       ),
-  //       body: Container(
-  //         color: Colors.black,
-  //       ),
-  //     )));
-  //   } else{
-  //     print('failed');
-  //   }
-  // }
-
-  Future<JobsModel> createUser(String title) async {
-    final response = await http.post(
-      Uri.parse('http://192.168.0.136:8000/api/jobseeker_register'),
-      headers: <String, String>{
-        'Accept': 'application/json',
-      },
-      body: jsonEncode(<String, String>{
-        'title': title,
-      }),
-    );
-
-    if (response.statusCode == 201) {
-      return JobsModel.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to create album.');
-    }
-  }
 
 
   @override
@@ -461,7 +417,6 @@ class _UserRegisterState extends State<UserRegister> {
                   SizedBox(height: 20),
                   TextButton(
                     onPressed: () {
-                      // register();
                       register();
                     },
                     style: TextButton.styleFrom(
@@ -493,11 +448,29 @@ class _UserRegisterState extends State<UserRegister> {
     if(nameController.text.isNotEmpty &&
         passController.text.isNotEmpty &&
         emailController.text.isNotEmpty &&
-        nricController.text.isNotEmpty
+        nricController.text.isNotEmpty &&
+        repassController.text.isNotEmpty &&
+        contactController.text.isNotEmpty
     ){
-      Navigator.push(context,
-          MaterialPageRoute(
-              builder: (context) => Users()));
+      var response = await http.post(Uri.parse("http://192.168.0.136:8000/api/employer_register"),
+          body: ({
+            'name':nameController.text,
+            'password':passController.text,
+            'email':emailController.text,
+            'nric':nricController.text,
+            'password_confirmation':repassController.text,
+            'contact_number': contactController.text
+          }));
+      print(response.body);
+      if(response.statusCode==201){
+        Navigator.push(context,
+            MaterialPageRoute(
+                builder: (context) => Login()));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content:
+            Text("Invalid Credentials")));
+      }
     }else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Blank Fields Not Allowed")));
     }
@@ -509,7 +482,7 @@ Widget buildSignInBtn(BuildContext context){
     onTap: (){
       Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => Users(),
+            builder: (context) => Login(),
           )
       );
     },

@@ -11,8 +11,8 @@ class JobseekerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
-        title: Text("Jobseekers Management"),
+        backgroundColor: Colors.black,
+        title: Text("Jobseekers List"),
       ),
       body: FutureBuilder(
         future: httpService.getJobseeker(),

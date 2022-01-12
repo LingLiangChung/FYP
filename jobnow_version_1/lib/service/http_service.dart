@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/employer/employers_model.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/job/jobs_model.dart';
-import 'package:jobnow_version_1/screens/admin/home/components/user/users_model.dart';
+import 'package:jobnow_version_1/screens/admin/home/components/user/jobseeker_model.dart';
 
 class HttpService {
   final String jobsURL = "http://192.168.0.136:8000/api/all_jobs";

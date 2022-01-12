@@ -11,7 +11,7 @@ class JobsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
+        backgroundColor: Colors.black,
         title: Text("Jobs Management"),
       ),
       body: FutureBuilder(

@@ -260,7 +260,7 @@ class JobsStatusDetail extends StatelessWidget {
                                   Icons.person,
                                   color: Colors.black87
                               ),
-                              hintText: 'jobseeker_2',
+                              hintText: 'jobseeker',
                               hintStyle: TextStyle(
                                   color: Colors.black87
                               )

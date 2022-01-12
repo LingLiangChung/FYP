@@ -69,35 +69,6 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
   TextEditingController nricController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
-  // register() async{
-  //   var data={
-  //     'name' : nameController.text,
-  //     'password': passController.text,
-  //     'password_confirmation': repassController.text,
-  //     'contact_number': contactController.text,
-  //     'nric': nricController.text,
-  //     'email': emailController.text,
-  //   };
-  //
-  //   var res = CallApi().postData(data, 'jobseeker_register');
-  //   var body = json.decode(res.body);
-  //   if(body['success']){
-  //     Navigator.push(context,
-  //     new MaterialPageRoute(builder: (context)=>Scaffold(
-  //       appBar: AppBar(
-  //
-  //       ),
-  //       body: Container(
-  //         color: Colors.black,
-  //       ),
-  //     )));
-  //   } else{
-  //     print('failed');
-  //   }
-  // }
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -473,7 +444,39 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
       ),
     );
   }
+  Future<void> register() async{
+    if(nameController.text.isNotEmpty &&
+        passController.text.isNotEmpty &&
+        emailController.text.isNotEmpty &&
+        nricController.text.isNotEmpty &&
+        repassController.text.isNotEmpty &&
+        contactController.text.isNotEmpty
+    ){
+      var response = await http.post(Uri.parse("http://192.168.0.136:8000/api/jobseeker_register"),
+          body: ({
+            'name':nameController.text,
+            'password':passController.text,
+            'email':emailController.text,
+            'nric':nricController.text,
+            'password_confirmation':repassController.text,
+            'contact_number': contactController.text
+          }));
+      print(response.body);
+      if(response.statusCode==201){
+        Navigator.push(context,
+            MaterialPageRoute(
+                builder: (context) => JobseekerLogin()));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content:
+            Text("Invalid Credentials")));
+      }
+    }else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Blank Fields Not Allowed")));
+    }
+  }
 }
+
 
 Widget buildSignInBtn(BuildContext context){
   return GestureDetector(

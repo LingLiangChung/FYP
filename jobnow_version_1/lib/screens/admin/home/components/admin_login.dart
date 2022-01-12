@@ -128,14 +128,14 @@ class _AdminLoginState extends State<AdminLogin>{
                         },
                         style: TextButton.styleFrom(
                           primary: Colors.black,
-                          backgroundColor: Color(0xFFFFF176),
+                          backgroundColor: Colors.black,
                         ),
                         child: Center(
                           child: Text(
                             "Login",
                             style: TextStyle(
                               fontSize: 23,
-                              color: Colors.black87,
+                              color: Colors.white,
                             ),
                           ),
                         ),

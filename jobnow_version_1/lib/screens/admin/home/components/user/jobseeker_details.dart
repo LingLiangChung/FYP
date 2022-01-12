@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/body.dart';
-import 'package:jobnow_version_1/screens/admin/home/components/user/users_model.dart';
+import 'package:jobnow_version_1/screens/admin/home/components/user/jobseeker_model.dart';
 import 'package:jobnow_version_1/service/http_service.dart';
 
 class JobseekerDetail extends StatelessWidget {
@@ -12,7 +12,7 @@ class JobseekerDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFAB47BC),
+          backgroundColor: Colors.black,
           title: Text("Jobseeker Detail"),
         ),
         body: SingleChildScrollView(

@@ -157,10 +157,7 @@ class JobseekerHome extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFFAB47BC),
-                  Color(0xFFE1BEE7),
-                  Color(0xFFE1BEE7),
-                  Color(0xFFAB47BC),
+                  Color(0x000000),
                 ]
               ),
             ),
@@ -177,7 +174,7 @@ class JobseekerHome extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.person,
-                      color: Colors.white,
+                      color: Colors.black,
                       size: 40,
                     ),
                     SizedBox(width: 16,),
@@ -188,7 +185,7 @@ class JobseekerHome extends StatelessWidget {
                         Text(
                           'Hi Jobseeker ',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 30,
                             fontWeight: FontWeight.bold
                           ),

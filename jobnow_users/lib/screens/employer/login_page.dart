@@ -4,14 +4,14 @@ import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/selections.dart';
 import 'package:http/http.dart' as http;
 
-class Users extends StatefulWidget {
-  const Users({ Key? key }) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({ Key? key }) : super(key: key);
 
   @override
-  _UsersState createState() => _UsersState();
+  _LoginState createState() => _LoginState();
 }
 
-class _UsersState extends State<Users> {
+class _LoginState extends State<Login> {
   var nameController = TextEditingController();
   var passController = TextEditingController();
 
