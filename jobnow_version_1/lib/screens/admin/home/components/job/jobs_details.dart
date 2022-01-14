@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_version_1/constants.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/job/send_notification.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/job/send_reject_notify.dart';
 import 'package:jobnow_version_1/service/http_service.dart';
@@ -13,8 +14,8 @@ class JobDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text(job.jobTitle),
+          backgroundColor: Color(0xFF424242),
+          title: Text("Job Details"),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -26,7 +27,7 @@ class JobDetail extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       ListTile(
-                        title: Text("Title"),
+                        title: Text("Job Title"),
                         subtitle: Text(job.jobTitle),
                       ),
                       ListTile(
@@ -52,11 +53,9 @@ class JobDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(120, 5, 0, 0),
+                  Center(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextButton(
                             onPressed: (){
@@ -71,7 +70,7 @@ class JobDetail extends StatelessWidget {
                                     color: Colors.white
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFAB47BC)
+                                backgroundColor: kApproveColor,
                             ),
                           ),
                           SizedBox(width: 10,),
@@ -89,7 +88,7 @@ class JobDetail extends StatelessWidget {
                               color: Colors.white
                             )),
                             style: TextButton.styleFrom(
-                              backgroundColor: Colors.redAccent
+                              backgroundColor: kRejectColor,
                             ),
                           ),
                         ],
@@ -97,10 +96,9 @@ class JobDetail extends StatelessWidget {
                     ),
                   ],
                 )
-              ],
             ),
           ),
-        )
+      backgroundColor: Color(0xFFEFEBE9),
     );
   }
 }

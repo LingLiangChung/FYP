@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,7 +19,7 @@ class _CreateJobState extends State<CreateJob>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
+        backgroundColor: kAppbarColor,
         title: Text('Create Job'),
         centerTitle: true,
       ),
@@ -30,7 +31,7 @@ class _CreateJobState extends State<CreateJob>{
               height: double.infinity,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: kBackgroundColor,
               ),
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
@@ -339,7 +340,7 @@ class _CreateJobState extends State<CreateJob>{
                       style: TextButton.styleFrom(
                         primary: Colors.black,
                         elevation: 5,
-                        backgroundColor: Color(0xFFAB47BC),
+                        backgroundColor: kApproveColor,
                       ),
                       child: Center(
                         child: Text(

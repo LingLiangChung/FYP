@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobseeker_model.dart';
 import 'package:jobnow_users/screens/employer/chat_room.dart';
 import 'package:jobnow_users/services/http_service.dart';
@@ -15,8 +16,8 @@ class JobseekerDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text("Jobseeker List"),
+          backgroundColor: kAppbarColor,
+          title: Text("Jobseeker Details"),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -47,6 +48,7 @@ class JobseekerDetail extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           TextButton(
                             onPressed: (){
@@ -56,13 +58,12 @@ class JobseekerDetail extends StatelessWidget {
                             },
                             child: Text('Copy Contact Number',
                                 style: TextStyle(
-                                    color: Color(0xFFAB47BC)
+                                    color: Colors.white,
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFFFF176)
+                                backgroundColor: kAppbarColor
                             ),
                           ),
-                          SizedBox(width: 90,),
                           TextButton(
                             onPressed: (){
                               Navigator.of(context).push(
@@ -73,10 +74,10 @@ class JobseekerDetail extends StatelessWidget {
                             },
                             child: Text('Contact Jobseeker',
                                 style: TextStyle(
-                                    color: Colors.white
+                                    color: kTextColor,
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFAB47BC)
+                                backgroundColor: kApproveColor
                             ),
                           ),
                         ],
@@ -88,7 +89,8 @@ class JobseekerDetail extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

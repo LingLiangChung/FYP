@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_version_1/constants.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/job/jobs_model.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/user/jobseeker_details.dart';
 import 'package:jobnow_version_1/service/http_service.dart';
@@ -13,7 +14,7 @@ class EmployerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: kAppbarColor,
         title: Text("Employers Management"),
       ),
       body: FutureBuilder(
@@ -26,7 +27,7 @@ class EmployerPage extends StatelessWidget {
                   .map(
                     (EmployerModel employer) => ListTile(
                   title: Text( "Name: " + employer.name),
-                  subtitle: Text( "Contact Number: " + "${employer.contactNumber}"),
+                  subtitle: Text( "Contact Number: " + "${employer.contactNumber}" + "..."),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => EmployerDetail(
@@ -43,6 +44,7 @@ class EmployerPage extends StatelessWidget {
           }
         },
       ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

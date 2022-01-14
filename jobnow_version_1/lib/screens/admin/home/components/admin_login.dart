@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:jobnow_version_1/screens/admin/home/components/body.dart';
 import 'package:jobnow_version_1/screens/loading/splash.dart';
-
 
 class AdminLogin extends StatefulWidget {
   const AdminLogin({Key? key}) : super(key: key);
@@ -19,7 +17,7 @@ class _AdminLoginState extends State<AdminLogin>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFEFEBE9),
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(),
@@ -113,8 +111,8 @@ class _AdminLoginState extends State<AdminLogin>{
                             ),
                             hintText: 'Password',
                             hintStyle: TextStyle(
-                              color: Colors.black38
-                            )
+                              color: Colors.black38,
+                            ),
                           ),
                         ),
                     ),
@@ -128,7 +126,7 @@ class _AdminLoginState extends State<AdminLogin>{
                         },
                         style: TextButton.styleFrom(
                           primary: Colors.black,
-                          backgroundColor: Colors.black,
+                          backgroundColor: Color(0xFF424242),
                         ),
                         child: Center(
                           child: Text(

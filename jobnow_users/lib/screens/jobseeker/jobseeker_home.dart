@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/jobseeker/chat_room.dart';
 import 'package:jobnow_users/screens/jobseeker/job_status.dart';
 import 'package:jobnow_users/screens/jobseeker/search/jobs_page.dart';
@@ -157,7 +158,8 @@ class JobseekerHome extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0x000000),
+                  kBackgroundColor,
+                  kBackgroundColor,
                 ]
               ),
             ),
@@ -183,7 +185,7 @@ class JobseekerHome extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi Jobseeker ',
+                          'Welcome Jobseeker',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 30,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
 import 'package:jobnow_users/services/http_service.dart';
 
@@ -11,7 +12,7 @@ class ManageJob extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
+        backgroundColor: kAppbarColor,
         title: Text("Jobs Management"),
       ),
       body: FutureBuilder(
@@ -23,8 +24,12 @@ class ManageJob extends StatelessWidget {
               children: jobs!
                   .map(
                     (JobsModel job) => ListTile(
-                  title: Text("Name: " + job.jobTitle),
-                  subtitle: Text("Contact Number: " + "${job.jobContent}"),
+                  title: Text("Name: " + job.jobTitle,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                    ),),
+                  subtitle: Text("Contact Number: " + "${job.jobContent}" + "..."),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => JobsDetail(
@@ -41,6 +46,7 @@ class ManageJob extends StatelessWidget {
           }
         },
       ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

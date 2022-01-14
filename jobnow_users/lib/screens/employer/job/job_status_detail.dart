@@ -15,7 +15,7 @@ class JobsStatusDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFAB47BC),
+          backgroundColor: kAppbarColor,
           title: Text("Job Status Detail"),
         ),
         body: SingleChildScrollView(
@@ -286,10 +286,10 @@ class JobsStatusDetail extends StatelessWidget {
                             },
                             child: Text('Job Done',
                                 style: TextStyle(
-                                    color: Colors.white
+                                    color: kTextColor
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFAB47BC)
+                                backgroundColor: kApproveColor
                             ),
                           ),
                           SizedBox(width: 10,),
@@ -307,7 +307,7 @@ class JobsStatusDetail extends StatelessWidget {
                                     color: Colors.white
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Colors.red
+                                backgroundColor: kRejectColor
                             ),
                           ),
                         ],
@@ -319,7 +319,8 @@ class JobsStatusDetail extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

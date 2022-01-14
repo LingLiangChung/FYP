@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/jobseeker/jobseeker_home.dart';
 
 class JobStatus extends StatefulWidget {
@@ -14,7 +15,7 @@ class _JobStatusState extends State<JobStatus> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: kAppbarColor,
         title: Text('Job Status'),
         centerTitle: true,
       ),
@@ -284,14 +285,14 @@ class _JobStatusState extends State<JobStatus> {
                     },
                     style: TextButton.styleFrom(
                       primary: Colors.black,
-                      backgroundColor: Color(0xFFAB47BC),
+                      backgroundColor: kApproveColor,
                     ),
                     child: Center(
                       child: Text(
                         "Update",
                         style: TextStyle(
                           fontSize: 23,
-                          color: Colors.white,
+                          color: kTextColor
                         ),
                       ),
                     ),
@@ -301,6 +302,7 @@ class _JobStatusState extends State<JobStatus> {
             ),
           ],
         ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

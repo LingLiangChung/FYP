@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/employer_model.dart';
 import 'package:jobnow_users/screens/employer/chat_room.dart';
 import 'package:jobnow_users/screens/employer/job/check_job_status.dart';
@@ -254,8 +255,7 @@ class _EmployerHomeState extends State<EmployerHome> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0x000000),
-                  Color(0xD6D4D4),
+                  kBackgroundColor
                 ]
               ),
             ),
@@ -281,7 +281,7 @@ class _EmployerHomeState extends State<EmployerHome> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi Employer',
+                          'Welcome Employer',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 30,
@@ -314,6 +314,7 @@ class _EmployerHomeState extends State<EmployerHome> {
         ),
       ],
       ),
+      backgroundColor: kBackgroundColor,
       // bottomNavigationBar: Container(
       //   height: 80,
       //   decoration: const BoxDecoration(

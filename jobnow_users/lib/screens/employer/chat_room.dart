@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../constants.dart';
+
 final String phoneNum = "123456789";
 
 launchEmail() async {
@@ -65,8 +67,8 @@ class EmployerChatRoom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
-        title: Text('Conversation Room'),
+        backgroundColor: kAppbarColor,
+        title: Text('Contact Methods'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -101,7 +103,7 @@ class EmployerChatRoom extends StatelessWidget {
                             color: Colors.white
                         )),
                     style: TextButton.styleFrom(
-                      backgroundColor: Color(0xFFAB47BC)
+                      backgroundColor: kAppbarColor,
                     ),
                   ),
                 ],
@@ -110,6 +112,7 @@ class EmployerChatRoom extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

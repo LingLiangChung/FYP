@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/services/http_service.dart';
@@ -14,8 +15,8 @@ class JobsDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text("Job Management"),
+          backgroundColor: kAppbarColor,
+          title: Text("Job Details"),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -311,74 +312,68 @@ class JobsDetail extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 10),
-                Column(
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(60, 5, 0, 0),
-                      child: Row(
-                        children: [
-                          TextButton(
-                            onPressed: (){
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => AddJobseeker(),
-                                ),
-                              );
-                            },
-                            child: Text('Add Jobseeker',
-                                style: TextStyle(
-                                    color: Colors.white
-                                )),
-                            style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFAB47BC)
-                            ),
+                    TextButton(
+                      onPressed: (){
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => AddJobseeker(),
                           ),
-                          SizedBox(width: 10,),
-                          TextButton(
-                            onPressed: (){
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => EmployerHome(),
-                                ),
-                              );
-                            },
-                            child: Text('Edit',
-                                style: TextStyle(
-                                    color: Color(0xFFAB47BC)
-                                )),
-                            style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFFFF176)
-                            ),
-                          ),
-                          SizedBox(width: 10,),
-                          TextButton(
-                            onPressed: () async {
-                              await httpService.deleteJob(job.id);
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => EmployerHome(),
-                                ),
-                              );
-                            },
-                            child: Text('Delete',
-                                style: TextStyle(
-                                    color: Colors.white
-                                )),
-                            style: TextButton.styleFrom(
-                                backgroundColor: Colors.red
-                            ),
-                          ),
-                        ],
+                        );
+                      },
+                      child: Text('Add Jobseeker',
+                          style: TextStyle(
+                              color: Colors.black
+                          )),
+                      style: TextButton.styleFrom(
+                          backgroundColor: kApproveColor
                       ),
-                    )
-
+                    ),
+                    SizedBox(width: 10,),
+                    TextButton(
+                      onPressed: (){
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => EmployerHome(),
+                          ),
+                        );
+                      },
+                      child: Text('Edit',
+                          style: TextStyle(
+                              color: Colors.black87
+                          )),
+                      style: TextButton.styleFrom(
+                          backgroundColor: Color(0xFFFFF176)
+                      ),
+                    ),
+                    SizedBox(width: 10,),
+                    TextButton(
+                      onPressed: () async {
+                        await httpService.deleteJob(job.id);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => EmployerHome(),
+                          ),
+                        );
+                      },
+                      child: Text('Delete',
+                          style: TextStyle(
+                              color: Colors.black
+                          )),
+                      style: TextButton.styleFrom(
+                          backgroundColor: kRejectColor
+                      ),
+                    ),
                   ],
                 )
               ],
             ),
           ),
-        )
+        ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

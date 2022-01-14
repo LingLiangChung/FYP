@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobseeker_model.dart';
 import 'jobseeker_login.dart';
 
@@ -11,7 +12,7 @@ Widget registerPosition(){
       Text(
         'Position',
         style: TextStyle(
-          color: Colors.white,
+          color: kTextColor,
           fontSize: 16,
           fontWeight: FontWeight.bold,
         ),
@@ -20,7 +21,7 @@ Widget registerPosition(){
       Container(
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          color: Color(0xFFFFCDD2),
+          color: Colors.black26,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -73,7 +74,6 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         child: Stack(
@@ -86,8 +86,8 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFFAB47BC),
-                    Color(0xFFE1BEE7),
+                    kBackgroundColor,
+                    kBackgroundColor,
                   ],
                 ),
               ),
@@ -103,7 +103,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                     Text(
                       'Sign Up',
                       style: TextStyle(
-                          color: Colors.white,
+                          color: kTextColor,
                           fontSize: 40,
                           fontWeight: FontWeight.bold
                       ),
@@ -116,7 +116,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                         Text(
                           'Username',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -166,7 +166,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                         Text(
                           'Email',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -216,7 +216,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                         Text(
                           'Phone Number',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -266,7 +266,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                         Text(
                           'IC Number',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -316,7 +316,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                         Text(
                           'Password',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -366,7 +366,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                         Text(
                           'Password Confirmation',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -417,14 +417,14 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
                       },
                       style: TextButton.styleFrom(
                           primary: Colors.black,
-                          backgroundColor: Color(0xFFAB47BC)
+                          backgroundColor: kApproveColor,
                       ),
                       child: Center(
                         child: Text(
                           "Register",
                           style: TextStyle(
                             fontSize: 23,
-                            color: Colors.white,
+                            color: kTextColor,
                           ),
                         ),
                       ),
@@ -488,7 +488,7 @@ Widget buildSignInBtn(BuildContext context){
             TextSpan(
               text: 'Already have an Account? ',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey,
                   fontSize: 18,
                   fontWeight: FontWeight.w500
               ),
@@ -496,7 +496,8 @@ Widget buildSignInBtn(BuildContext context){
             TextSpan(
                 text: 'Sign in',
                 style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.black87,
+                    decoration: TextDecoration.underline,
                     fontSize: 18,
                     fontWeight: FontWeight.bold
                 )

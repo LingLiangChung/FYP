@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_version_1/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../body.dart';
@@ -66,7 +67,7 @@ class SendNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: kAppbarColor,
         title: Text('Send Notification'),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -102,7 +103,7 @@ class SendNotification extends StatelessWidget {
                             color: Colors.white
                         )),
                     style: TextButton.styleFrom(
-                      backgroundColor: Color(0xFFAB47BC),
+                      backgroundColor: kAppbarColor,
                     ),
                   ),
                 ],
@@ -111,6 +112,7 @@ class SendNotification extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

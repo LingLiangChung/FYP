@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/employer/register_page.dart';
 import 'package:jobnow_users/screens/jobseeker/jobseeker_register.dart';
 
@@ -21,9 +22,8 @@ class SelectPosition extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFFAB47BC),
-                    Color(0xFFE1BEE7),
-                    Color(0xFFAB47BC),
+                    kBackgroundColor,
+                    kBackgroundColor,
                   ],
                 ),
               ),
@@ -39,7 +39,7 @@ class SelectPosition extends StatelessWidget {
                     Text(
                       'Hi, what you want to be ?',
                       style: TextStyle(
-                      color: Colors.white,
+                      color: kTextColor,
                       fontSize: 30,
                       fontWeight: FontWeight.bold
                     ),
@@ -57,14 +57,13 @@ class SelectPosition extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
-                      backgroundColor: Colors.white,
+                      backgroundColor: kAppbarColor,
                       ),
                       child:  Text(
                         'Employer',
                         style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold
+                          color: Colors.white,
+                          fontSize: 24,
                         ),
                       ),
                     ),
@@ -89,14 +88,13 @@ class SelectPosition extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
-                      backgroundColor: Colors.white,
+                      backgroundColor: kAppbarColor
                       ),
                       child:  Text(
                         'Jobseeker',
                         style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold
+                          color: Colors.white,
+                          fontSize: 24,
                         ),
                       ),
                     ),

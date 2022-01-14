@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:jobnow_users/constants.dart';
 
 import 'employer_home.dart';
 import 'login_page.dart';
@@ -14,7 +15,7 @@ Widget registerPosition(){
       Text(
         'Position',
         style: TextStyle(
-          color: Colors.white,
+          color: kTextColor,
           fontSize: 16,
           fontWeight: FontWeight.bold,
         ),
@@ -23,7 +24,7 @@ Widget registerPosition(){
       Container(
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          color: Color(0xFFFFCDD2),
+          color: Colors.grey,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -77,7 +78,6 @@ class _UserRegisterState extends State<UserRegister> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         child: Stack(
@@ -90,8 +90,8 @@ class _UserRegisterState extends State<UserRegister> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFFAB47BC),
-                    Color(0xFFE1BEE7),
+                    kBackgroundColor,
+                    kBackgroundColor,
                   ],
                 ),
               ),
@@ -107,7 +107,7 @@ class _UserRegisterState extends State<UserRegister> {
                     Text(
                     'Sign Up',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: kTextColor,
                       fontSize: 40,
                       fontWeight: FontWeight.bold
                     ),
@@ -120,7 +120,7 @@ class _UserRegisterState extends State<UserRegister> {
                       Text(
                         'Username',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: kTextColor,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -170,7 +170,7 @@ class _UserRegisterState extends State<UserRegister> {
                     Text(
                       'Email',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kTextColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -220,7 +220,7 @@ class _UserRegisterState extends State<UserRegister> {
                     Text(
                       'Phone Number',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kTextColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -270,7 +270,7 @@ class _UserRegisterState extends State<UserRegister> {
                     Text(
                       'IC Number',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kTextColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -320,7 +320,7 @@ class _UserRegisterState extends State<UserRegister> {
                     Text(
                       'Password',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kTextColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -370,7 +370,7 @@ class _UserRegisterState extends State<UserRegister> {
                     Text(
                       'Password Confirmation',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: kTextColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -421,7 +421,7 @@ class _UserRegisterState extends State<UserRegister> {
                     },
                     style: TextButton.styleFrom(
                       primary: Colors.black,
-                      backgroundColor: Color(0xFFAB47BC)
+                      backgroundColor: kApproveColor
                     ),
                     child: Center(
                       child: Text(
@@ -492,7 +492,7 @@ Widget buildSignInBtn(BuildContext context){
             TextSpan(
               text: 'Already have an Account? ',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey,
                   fontSize: 18,
                   fontWeight: FontWeight.w500
               ),
@@ -500,7 +500,8 @@ Widget buildSignInBtn(BuildContext context){
             TextSpan(
                 text: 'Sign in',
                 style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.black87,
+                    decoration: TextDecoration.underline,
                     fontSize: 18,
                     fontWeight: FontWeight.bold
                 )

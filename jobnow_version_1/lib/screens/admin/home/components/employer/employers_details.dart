@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_version_1/constants.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/body.dart';
 import 'package:jobnow_version_1/screens/admin/home/components/user/jobseeker_model.dart';
 import 'package:jobnow_version_1/service/http_service.dart';
@@ -14,8 +15,8 @@ class EmployerDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text("Employer List"),
+          backgroundColor: kAppbarColor,
+          title: Text("Employer Details"),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -45,11 +46,8 @@ class EmployerDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(120, 5, 0, 0),
-                      child: Row(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextButton(
                             onPressed: (){
@@ -64,7 +62,7 @@ class EmployerDetail extends StatelessWidget {
                                     color: Colors.white
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFAB47BC)
+                                backgroundColor: kApproveColor,
                             ),
                           ),
                           SizedBox(width: 10,),
@@ -87,14 +85,11 @@ class EmployerDetail extends StatelessWidget {
                           ),
                         ],
                       ),
-                    )
-
-                  ],
-                )
               ],
             ),
           ),
-        )
+        ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

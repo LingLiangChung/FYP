@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
 import 'package:jobnow_users/screens/jobseeker/jobs/apply_chat_room.dart';
 import 'package:jobnow_users/services/http_service.dart';
-
-import '../chat_room.dart';
-import '../jobseeker_home.dart';
 
 class JobDetail extends StatelessWidget {
   final JobsModel job;
@@ -15,8 +13,8 @@ class JobDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text( "Title: " + job.jobTitle),
+          backgroundColor: kAppbarColor,
+          title: Text( "Job Details"),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -70,10 +68,10 @@ class JobDetail extends StatelessWidget {
                             },
                             child: Text('Apply Job',
                                 style: TextStyle(
-                                    color: Colors.white
+                                    color: Colors.black87
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFAB47BC),
+                                backgroundColor: kApproveColor,
                             ),
                           ),
                         ],
@@ -85,7 +83,8 @@ class JobDetail extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/jobseeker/jobs/apply_job.dart';
 import 'package:jobnow_users/screens/jobseeker/jobseeker_home.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -67,8 +68,8 @@ class JobseekerApplyChatRoom extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFAB47BC),
-        title: Text('Contact Employer'),
+        backgroundColor: kAppbarColor,
+        title: Text('Job Confirmation'),
         centerTitle: true,
       ),
       body: Stack(
@@ -77,7 +78,23 @@ class JobseekerApplyChatRoom extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Column(
-            children: [
+                children: [
+                  Card(
+                    child: Center(
+                      child: Text(
+                        'Before you apply this job,\n'
+                            'you may contact employer to get\n'
+                            'more information.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: kTextColor,
+                        ),
+                      ),
+                    ),
+                  ),
+
+              SizedBox(height: 15,),
               Expanded(
                 child: GridView.count(
                   mainAxisSpacing: 10,
@@ -90,8 +107,8 @@ class JobseekerApplyChatRoom extends StatelessWidget {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(width: 40,),
                   TextButton(
                     onPressed: (){
                       Navigator.of(context).push(
@@ -102,13 +119,12 @@ class JobseekerApplyChatRoom extends StatelessWidget {
                     },
                     child: Text('Confirm Apply Job',
                         style: TextStyle(
-                            color: Colors.white
+                            color: kTextColor
                         )),
                     style: TextButton.styleFrom(
-                        backgroundColor: Color(0xFFAB47BC)
+                        backgroundColor: kApproveColor
                     ),
                   ),
-                  SizedBox(width: 15,),
                   TextButton(
                     onPressed: (){
                       Navigator.of(context).push(
@@ -119,10 +135,10 @@ class JobseekerApplyChatRoom extends StatelessWidget {
                     },
                     child: Text('Decide Later',
                         style: TextStyle(
-                            color: Color(0xFFAB47BC)
+                            color: Colors.white
                         )),
                     style: TextButton.styleFrom(
-                        backgroundColor: Color(0xFFFFF176)
+                        backgroundColor: kRejectColor
                     ),
                   ),
                 ],
@@ -134,6 +150,7 @@ class JobseekerApplyChatRoom extends StatelessWidget {
         ),
         ],
       ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }

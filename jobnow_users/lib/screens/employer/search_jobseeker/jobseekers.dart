@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobseeker_model.dart';
 import 'package:jobnow_users/services/http_service.dart';
 
@@ -11,7 +12,7 @@ class JobseekerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: kAppbarColor,
         title: Text("Jobseekers List"),
       ),
       body: FutureBuilder(
@@ -23,7 +24,11 @@ class JobseekerPage extends StatelessWidget {
               children: jobseekers!
                   .map(
                     (JobseekerModel jobseeker) => ListTile(
-                  title: Text("Name: " + jobseeker.name),
+                  title: Text("Name: " + jobseeker.name,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                    ),),
                   subtitle: Text("Contact Number: " + "${jobseeker.contactNumber}"),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(

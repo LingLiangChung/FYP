@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/selections.dart';
 import 'package:http/http.dart' as http;
@@ -32,9 +33,8 @@ class _JobseekerLoginState extends State<JobseekerLogin> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFFAB47BC),
-                    Color(0xFFE1BEE7),
-                    Color(0xFFAB47BC),
+                    kBackgroundColor,
+                    kBackgroundColor
                   ],
                 ),
               ),
@@ -50,7 +50,7 @@ class _JobseekerLoginState extends State<JobseekerLogin> {
                     Text(
                       'Sign In',
                       style: TextStyle(
-                          color: Colors.white,
+                          color: kTextColor,
                           fontSize: 40,
                           fontWeight: FontWeight.bold
                       ),
@@ -62,7 +62,7 @@ class _JobseekerLoginState extends State<JobseekerLogin> {
                         Text(
                           'Name',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -111,7 +111,7 @@ class _JobseekerLoginState extends State<JobseekerLogin> {
                         Text(
                           'Password',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kTextColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -162,9 +162,9 @@ class _JobseekerLoginState extends State<JobseekerLogin> {
                         },
                         style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          backgroundColor: Colors.white,
+                          backgroundColor: kApproveColor,
                         ),
                         child: Text(
                           'LOGIN',
@@ -224,7 +224,7 @@ Widget buildSignUpBtn(BuildContext context){
             TextSpan(
               text: 'Don\'t have an Account? ',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.grey,
                   fontSize: 18,
                   fontWeight: FontWeight.w500
               ),
@@ -232,7 +232,8 @@ Widget buildSignUpBtn(BuildContext context){
             TextSpan(
                 text: 'Sign Up',
                 style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.black87,
+                    decoration: TextDecoration.underline,
                     fontSize: 18,
                     fontWeight: FontWeight.bold
                 )

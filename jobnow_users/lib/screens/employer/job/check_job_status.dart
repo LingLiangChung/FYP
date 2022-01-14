@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
 import 'package:jobnow_users/services/http_service.dart';
 
@@ -12,7 +13,7 @@ class CheckJobStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
+        backgroundColor: kAppbarColor,
         title: Text("Jobs Status"),
       ),
       body: FutureBuilder(
@@ -37,9 +38,8 @@ class CheckJobStatus extends StatelessWidget {
                         height: 30,
                         width: 100,
                         decoration: BoxDecoration(
-                          color: Colors.purpleAccent,
+                          color: job.jobStatus.toString() == "Pending"?Colors.redAccent:kApproveColor,
                           borderRadius: BorderRadius.circular(3),
-
                         ),
                         child: Center(
                           child: Text(job.jobStatus,
@@ -57,6 +57,7 @@ class CheckJobStatus extends StatelessWidget {
           }
         },
       ),
+      backgroundColor: kBackgroundColor,
     );
   }
 }
