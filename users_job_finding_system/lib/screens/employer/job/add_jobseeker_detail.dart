@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/models/jobseeker_model.dart';
-import 'package:jobnow_users/screens/employer/chat_room.dart';
+import 'package:jobnow_users/screens/employer/chat/chat_room.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/screens/employer/job/add_jobseeker.dart';
 import 'package:jobnow_users/services/http_service.dart';

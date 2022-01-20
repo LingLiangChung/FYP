@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
 import 'package:jobnow_users/services/http_service.dart';
-
 import 'job_detail.dart';
 
 class ManageJob extends StatelessWidget {

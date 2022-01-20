@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../constants.dart';
+import '../../../constants.dart';
 
 final String phoneNum = "123456789";
 

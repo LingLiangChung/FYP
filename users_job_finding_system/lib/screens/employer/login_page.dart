@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
+import 'package:jobnow_users/models/AuthReceiver.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/selections.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({ Key? key }) : super(key: key);
@@ -185,14 +189,20 @@ class _LoginState extends State<Login> {
     );
   }
   Future<void> login() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     if(passController.text.isNotEmpty && nameController.text.isNotEmpty){
       var response = await http.post(Uri.parse("http://192.168.0.136:8000/api/employer_login"),
       body: ({
         'name':nameController.text,
         'password':passController.text,
       }));
+      print(response.body);
       if(response.statusCode==201){
-        Navigator.push(context, 
+        AuthReceiver? authReceiver = AuthReceiver.fromJson(jsonDecode(response.body));
+        sharedPreferences.setInt("userID", authReceiver.jobseeker!.id!);
+        sharedPreferences.setString("userToken", authReceiver.token!);
+
+        Navigator.push(context,
           MaterialPageRoute(
             builder: (context) => EmployerHome()));
       } else {

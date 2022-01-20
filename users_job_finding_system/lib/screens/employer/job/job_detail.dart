@@ -6,11 +6,36 @@ import 'package:jobnow_users/services/http_service.dart';
 
 import 'add_jobseeker.dart';
 
-class JobsDetail extends StatelessWidget {
+class JobsDetail extends StatefulWidget {
   final JobsModel job;
-  final HttpService httpService = HttpService();
+
   JobsDetail({required this.job});
 
+  @override
+  State<JobsDetail> createState() => _JobsDetailState();
+}
+
+class _JobsDetailState extends State<JobsDetail> {
+
+  TextEditingController txt = TextEditingController();
+  final HttpService httpService = HttpService();
+  bool _isEditingText = false;
+  TextEditingController jobTitle = TextEditingController();
+
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    txt = TextEditingController(text: widget.job.jobTitle);
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    txt.dispose();
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +75,12 @@ class JobsDetail extends StatelessWidget {
                     ),
                     height: 60,
                     child: TextField(
+                      onSubmitted: (newValue){
+                        setState(() {
+                          txt = newValue as TextEditingController;
+                        });
+                      },
+                      controller: txt,
                         keyboardType: TextInputType.name,
                         style: TextStyle(
                           color: Colors.black87,
@@ -61,11 +92,11 @@ class JobsDetail extends StatelessWidget {
                                 Icons.work,
                                 color: Colors.black87
                             ),
-                            hintText: job.jobTitle,
+                            hintText: widget.job.jobTitle,
                             hintStyle: TextStyle(
                                 color: Colors.black87
                             )
-                        )
+                        ),
                     ),
                     )
                     ],
@@ -111,7 +142,7 @@ class JobsDetail extends StatelessWidget {
                                   Icons.text_fields,
                                   color: Colors.black87
                               ),
-                              hintText: job.jobContent,
+                              hintText: widget.job.jobContent,
                               hintStyle: TextStyle(
                                   color: Colors.black87
                               )
@@ -159,7 +190,7 @@ class JobsDetail extends StatelessWidget {
                                   Icons.attach_money,
                                   color: Colors.black87
                               ),
-                              hintText: job.totalPayment.toString(),
+                              hintText: widget.job.totalPayment.toString(),
                               hintStyle: TextStyle(
                                   color: Colors.black87
                               )
@@ -207,7 +238,7 @@ class JobsDetail extends StatelessWidget {
                                   Icons.date_range_outlined,
                                   color: Colors.black87
                               ),
-                              hintText: job.startDateAt,
+                              hintText: widget.job.startDateAt,
                               hintStyle: TextStyle(
                                   color: Colors.black87
                               )
@@ -255,7 +286,7 @@ class JobsDetail extends StatelessWidget {
                                   Icons.date_range_outlined,
                                   color: Colors.black87
                               ),
-                              hintText: job.endDateAt,
+                              hintText: widget.job.endDateAt,
                               hintStyle: TextStyle(
                                   color: Colors.black87
                               )
@@ -303,7 +334,7 @@ class JobsDetail extends StatelessWidget {
                                   Icons.timelapse,
                                   color: Colors.black87
                               ),
-                              hintText: job.startTimeAt,
+                              hintText: widget.job.startTimeAt,
                               hintStyle: TextStyle(
                                   color: Colors.black87
                               )
@@ -334,7 +365,8 @@ class JobsDetail extends StatelessWidget {
                     ),
                     SizedBox(width: 10,),
                     TextButton(
-                      onPressed: (){
+                      onPressed: () async{
+                        await httpService.updateJobs(widget.job.id);
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => EmployerHome(),
@@ -352,7 +384,7 @@ class JobsDetail extends StatelessWidget {
                     SizedBox(width: 10,),
                     TextButton(
                       onPressed: () async {
-                        await httpService.deleteJob(job.id);
+                        await httpService.deleteJob(widget.job.id);
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => EmployerHome(),
@@ -377,3 +409,4 @@ class JobsDetail extends StatelessWidget {
     );
   }
 }
+

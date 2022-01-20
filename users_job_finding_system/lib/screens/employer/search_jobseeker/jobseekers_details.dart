@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobseeker_model.dart';
-import 'package:jobnow_users/screens/employer/chat_room.dart';
+import 'package:jobnow_users/screens/employer/chat/chat_room.dart';
 import 'package:jobnow_users/services/http_service.dart';
 
 import '../employer_home.dart';

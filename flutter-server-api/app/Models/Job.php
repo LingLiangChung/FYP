@@ -17,10 +17,6 @@ class Job extends Model
      */
     protected $fillable = [
         'id',
-        'employer_id',
-        'jobseeker_id',
-        'admin_id',
-        'payment_id',
         'job_title',
         'job_content',
         'total_payment',
@@ -28,7 +24,5 @@ class Job extends Model
         'endDate_at',
         'startTime_at',
         'job_status',
-        'job_verification',
-
     ];
 }

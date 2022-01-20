@@ -1,11 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
-import 'package:jobnow_users/screens/jobseeker/chat_room.dart';
+import 'package:jobnow_users/screens/employer/chat/screens/chat_page.dart';
 import 'package:jobnow_users/screens/jobseeker/job_status.dart';
-import 'package:jobnow_users/screens/jobseeker/search/jobs_page.dart';
-
-import '../employer/login_page.dart';
 import 'jobs/jobs.dart';
 import 'jobseeker_login.dart';
 
@@ -81,7 +77,7 @@ Widget cardChat(context){
     onTap: (){
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => JobseekerChatRoom(),
+          builder: (context) => ChatPage(),
         )
       );
     },

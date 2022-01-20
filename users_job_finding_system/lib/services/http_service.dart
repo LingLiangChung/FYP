@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
 import 'package:jobnow_users/models/jobseeker_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HttpService {
   final String jobsURL = "http://192.168.0.136:8000/api/all_jobs";
@@ -27,6 +28,8 @@ class HttpService {
     }
   }
   Future<void> updateJobs(int id) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String? token = sharedPreferences.getString("userToken")!;
     Response res = await http.put(Uri.parse("$jobsURL/$id"));
 
     if (res.statusCode == 200) {
