@@ -5,6 +5,8 @@ import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/screens/employer/job/add_jobseeker.dart';
 import 'package:jobnow_users/services/http_service.dart';
 
+import '../../../constants.dart';
+
 class AddJobseekerDetail extends StatelessWidget {
   final JobseekerModel jobseeker;
   final HttpService httpService = HttpService();
@@ -14,8 +16,12 @@ class AddJobseekerDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFAB47BC),
-          title: Text("Jobseeker Approving"),
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+          backgroundColor: kAppbarColor,
+          title: Text('Approve Jobseeker', style: TextStyle(color: Colors.white),),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -49,6 +55,7 @@ class AddJobseekerDetail extends StatelessWidget {
                         children: [
                           TextButton(
                             onPressed: (){
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Jobseeker is Added !")));
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => EmployerHome(),
@@ -60,7 +67,7 @@ class AddJobseekerDetail extends StatelessWidget {
                                     color: Colors.white
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFAB47BC)
+                                backgroundColor: kApproveColor
                             ),
                           ),
                           SizedBox(width: 15,),
@@ -68,16 +75,16 @@ class AddJobseekerDetail extends StatelessWidget {
                             onPressed: (){
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => AddJobseeker(),
+                                  builder: (context) => EmployerHome(),
                                 ),
                               );
                             },
                             child: Text('Cancel',
                                 style: TextStyle(
-                                    color: Color(0xFFAB47BC)
+                                    color: Colors.white
                                 )),
                             style: TextButton.styleFrom(
-                                backgroundColor: Color(0xFFFFF176)
+                                backgroundColor: kRejectColor
                             ),
                           ),
                         ],

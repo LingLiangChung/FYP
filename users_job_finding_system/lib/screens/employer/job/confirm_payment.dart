@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 
+import '../../../constants.dart';
 import 'make_payment.dart';
 
 class ConfirmPay extends StatelessWidget {
@@ -10,8 +11,11 @@ class ConfirmPay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
-        title: Text('Confirm Pay Salary'),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        backgroundColor: kAppbarColor,
+        title: Text('Confirm Pay Salary', style: TextStyle(color: Colors.white),),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -63,6 +67,7 @@ Widget payment(BuildContext context){
             children: [
               TextButton(
                 onPressed: (){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Salary is paid !")));
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => EmployerHome(),
@@ -74,12 +79,13 @@ Widget payment(BuildContext context){
                         color: Colors.white
                     )),
                 style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFFAB47BC)
+                    backgroundColor: kApproveColor,
                 ),
               ),
               SizedBox(width: 10,),
               TextButton(
                 onPressed: (){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cancel to pay salary")));
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => MakePayment(),
@@ -91,7 +97,7 @@ Widget payment(BuildContext context){
                         color: Colors.white
                     )),
                 style: TextButton.styleFrom(
-                    backgroundColor: Colors.red
+                    backgroundColor: kRejectColor
                 ),
               ),
             ],

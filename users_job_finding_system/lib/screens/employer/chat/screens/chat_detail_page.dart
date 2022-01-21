@@ -54,9 +54,13 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        backgroundColor: kAppbarColor,
+        centerTitle: true,
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: kAppbarColor,
         flexibleSpace: SafeArea(
           child: Container(
             padding: EdgeInsets.only(right: 16),
@@ -70,7 +74,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 ),
                 SizedBox(width: 2,),
                 CircleAvatar(
-                  backgroundImage: NetworkImage('https://picsum.photos/250?image=9'),
+                  child: Icon(Icons.person),
                   maxRadius: 20,
                 ),
                 SizedBox(width: 12,),
@@ -79,9 +83,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("employer",style: TextStyle( color: Colors.white, fontSize: 16 ,fontWeight: FontWeight.w600),),
-                      SizedBox(height: 6,),
-                      Text("Online",style: TextStyle(color: Colors.white38, fontSize: 13),),
+                      Text("Online",style: TextStyle(color: Colors.white, fontSize: 13),),
                     ],
                   ),
                 ),

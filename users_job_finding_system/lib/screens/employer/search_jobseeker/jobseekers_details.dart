@@ -16,8 +16,12 @@ class JobseekerDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
           backgroundColor: kAppbarColor,
-          title: Text("Jobseeker Details"),
+          title: Text('Jobseeker Detail', style: TextStyle(color: Colors.white),),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Padding(

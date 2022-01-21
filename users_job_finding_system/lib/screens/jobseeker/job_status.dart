@@ -15,8 +15,11 @@ class _JobStatusState extends State<JobStatus> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text('Job Status'),
+        title: Text('Job Status', style: TextStyle(color: Colors.white),),
         centerTitle: true,
       ),
       body: Stack(
@@ -292,7 +295,7 @@ class _JobStatusState extends State<JobStatus> {
                         "Update",
                         style: TextStyle(
                           fontSize: 23,
-                          color: kTextColor
+                          color: Colors.white
                         ),
                       ),
                     ),

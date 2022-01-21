@@ -11,8 +11,12 @@ class ManageJob extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text("Jobs Management"),
+        title: Text('Jobs List', style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: httpService.getJobs(),

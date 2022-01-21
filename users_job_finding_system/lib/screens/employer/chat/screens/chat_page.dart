@@ -47,8 +47,12 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text("Chat Room"),
+        title: Text('Chat Room', style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -70,7 +74,7 @@ class _ChatPageState extends State<ChatPage> {
                       },
                     );
                   }else{
-                    return Text('Loading...');
+                    return Center(child: CircularProgressIndicator());
                   }
                 },
               ),

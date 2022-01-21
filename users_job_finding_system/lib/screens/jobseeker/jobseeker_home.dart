@@ -1,7 +1,9 @@
+import 'package:draggable_home/draggable_home.dart';
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/employer/chat/screens/chat_page.dart';
 import 'package:jobnow_users/screens/jobseeker/job_status.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'jobs/jobs.dart';
 import 'jobseeker_login.dart';
 
@@ -138,80 +140,109 @@ Widget cardLogout(BuildContext context){
   );
 }
 
-class JobseekerHome extends StatelessWidget {
+class JobseekerHome extends StatefulWidget {
   const JobseekerHome({ Key? key }) : super(key: key);
+
+  @override
+  State<JobseekerHome> createState() => _JobseekerHomeState();
+}
+
+class _JobseekerHomeState extends State<JobseekerHome> {
+
+  int currentLoggedInUserID = 0;
+
+  Future<void> getLoggedInUserData() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    int userID = sharedPreferences.getInt("userID")!;
+
+    setState(() {
+      currentLoggedInUserID = userID;
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            height: size.height * 5,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  kBackgroundColor,
-                  kBackgroundColor,
-                ]
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
+    return DraggableHome(
+        title: Text('Home'),
+        headerExpandedHeight: .2,
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
             children: [
-              Container(
-                height: 64,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.person,
-                      color: Colors.black,
-                      size: 40,
-                    ),
-                    SizedBox(width: 16,),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Welcome Jobseeker',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              DrawerHeader(
+                  decoration: BoxDecoration(
+                      color: kAppbarColor
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Menu', style: TextStyle(color: Colors.white, fontSize: 24),),
+                    ],
+                  )
               ),
-              Expanded(
-                child: GridView.count(
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  crossAxisCount: 2,
+              ListTile(
+                title: Row(
                   children: [
-                    cardViewJob(context),
-                    cardWorkStatus(context),
-                    cardChat(context),
-                    cardLogout(context)
+                    Icon(Icons.logout),
+                    SizedBox(width: 5,),
+                    Text('Logout', style: TextStyle(fontSize: 18),),
                   ],
                 ),
+                onTap: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => JobseekerLogin(),
+                      )
+                  );
+                },
               ),
             ],
           ),
-            ),
         ),
-      ],
-      ),
+        backgroundColor: kBackgroundColor,
+        headerWidget: Container(
+          decoration: BoxDecoration(
+            color: kAppbarColor,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Welcome Jobseeker',
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                ),),
+            ],
+          ),
+        ),
+        body: [Container(
+          width: size.width,
+          height: size.height,
+          child: GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            children: [
+              Container(
+                padding: EdgeInsets.all(8),
+                child: cardViewJob(context),
+              ),
+              Container(
+                padding: EdgeInsets.all(8),
+                child: cardWorkStatus(context),
+              ),
+              Container(
+                padding: EdgeInsets.all(8),
+                child: cardChat(context),
+              ),
+            ],
+          ),
+        )]
     );
   }
 }

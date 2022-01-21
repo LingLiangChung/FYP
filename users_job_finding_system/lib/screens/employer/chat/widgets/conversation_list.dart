@@ -37,7 +37,7 @@ class _ConversationListState extends State<ConversationList> {
               child: Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage('https://picsum.photos/250?image=9'),
+                    child: Icon(Icons.person),
                     maxRadius: 30,
                   ),
                   SizedBox(width: 16,),
@@ -53,15 +53,7 @@ class _ConversationListState extends State<ConversationList> {
                                 fontSize: 16
                             ),
                           ),
-                          SizedBox(height: 6,),
-                          Text(
-                            email, // used to be text message but I replace with user email
-                            style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.grey.shade600,
-                                fontWeight: FontWeight.bold
-                            ),
-                          ),
+                          SizedBox(height: 6,)
                         ],
                       ),
                     ),

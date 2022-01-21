@@ -12,8 +12,12 @@ class JobseekerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text("Jobseekers List"),
+        title: Text('Jobseekers List', style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: httpService.getJobseeker(),

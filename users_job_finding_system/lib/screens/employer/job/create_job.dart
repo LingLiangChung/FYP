@@ -25,9 +25,13 @@ class _CreateJobState extends State<CreateJob>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text('Create Job'),
+        title: Text('Create Job', style: TextStyle(color: Colors.white),),
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
@@ -412,8 +416,8 @@ class _CreateJobState extends State<CreateJob>{
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
-                  ], 
+                    SizedBox(height: 200,),
+                  ],
                 ),
               ),
             )
@@ -443,6 +447,7 @@ class _CreateJobState extends State<CreateJob>{
           }));
       print(response.body);
       if(response.statusCode==201){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Job is created! Pending admin Verify")));
         Navigator.push(context,
             MaterialPageRoute(
                 builder: (context) => EmployerHome()));

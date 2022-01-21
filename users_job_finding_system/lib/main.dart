@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/selections.dart';
 
 void main() {
@@ -13,6 +14,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: AppBarTheme(
+          backgroundColor: kBackgroundColor,
+          foregroundColor: kTextColor,
+        )
       ),
       home: SelectPosition(),
     );
