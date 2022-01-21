@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/screens/jobseeker/jobseeker_home.dart';
 
 Widget jobTitle(){

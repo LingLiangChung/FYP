@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:jobnow_users/screens/jobseeker/jobseeker_home.dart';
 
+import '../../../constants.dart';
+
 
 class ConfirmApply extends StatelessWidget {
   const ConfirmApply({Key? key}) : super(key: key);
@@ -10,8 +12,11 @@ class ConfirmApply extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text('Confirm Apply Job'),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        backgroundColor: kAppbarColor,
+        title: Text('Confirm Apply Job', style: TextStyle(color: Colors.white),),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -74,7 +79,7 @@ Widget payment(BuildContext context){
                       color: Colors.white
                   )),
               style: TextButton.styleFrom(
-                  backgroundColor: Color(0xFFAB47BC)
+                  backgroundColor: kApproveColor
               ),
             ),
             SizedBox(width: 10,),
@@ -91,7 +96,7 @@ Widget payment(BuildContext context){
                       color: Colors.white
                   )),
               style: TextButton.styleFrom(
-                  backgroundColor: Colors.red
+                  backgroundColor: kRejectColor
               ),
             ),
           ],

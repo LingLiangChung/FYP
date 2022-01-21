@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
@@ -12,15 +14,24 @@ class CreateJob extends StatefulWidget {
 
 
 class _CreateJobState extends State<CreateJob>{
-  var titleController = TextEditingController();
-  var contentController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController contentController = TextEditingController();
+  TextEditingController salaryController = TextEditingController();
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
+  TextEditingController startTimeController = TextEditingController();
+  TextEditingController jobStatusController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text('Create Job'),
+        title: Text('Create Job', style: TextStyle(color: Colors.white),),
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
@@ -169,6 +180,7 @@ class _CreateJobState extends State<CreateJob>{
                           height: 60,
                           child: TextField(
                               keyboardType: TextInputType.number,
+                              controller: salaryController,
                               style: TextStyle(
                                 color: Colors.black87,
                               ),
@@ -217,6 +229,7 @@ class _CreateJobState extends State<CreateJob>{
                           height: 60,
                           child: TextField(
                               keyboardType: TextInputType.name,
+                              controller: startDateController,
                               style: TextStyle(
                                 color: Colors.black87,
                               ),
@@ -265,6 +278,7 @@ class _CreateJobState extends State<CreateJob>{
                           height: 60,
                           child: TextField(
                               keyboardType: TextInputType.name,
+                              controller: endDateController,
                               style: TextStyle(
                                 color: Colors.black87,
                               ),
@@ -313,6 +327,7 @@ class _CreateJobState extends State<CreateJob>{
                           height: 60,
                           child: TextField(
                               keyboardType: TextInputType.name,
+                              controller: startTimeController,
                               style: TextStyle(
                                 color: Colors.black87,
                               ),
@@ -324,6 +339,55 @@ class _CreateJobState extends State<CreateJob>{
                                       color: Colors.black87
                                   ),
                                   hintText: 'Eg.04:00',
+                                  hintStyle: TextStyle(
+                                      color: Colors.black38
+                                  )
+                              )
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 15,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Job Status',
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 6,
+                                offset: Offset(2,3),
+                              ),
+                            ],
+                          ),
+                          height: 60,
+                          child: TextField(
+                              keyboardType: TextInputType.text,
+                              controller: jobStatusController,
+                              style: TextStyle(
+                                color: Colors.black87,
+                              ),
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(top: 14),
+                                  prefixIcon: Icon(
+                                      Icons.timelapse,
+                                      color: Colors.black87
+                                  ),
+                                  hintText: 'Pending',
                                   hintStyle: TextStyle(
                                       color: Colors.black38
                                   )
@@ -352,8 +416,8 @@ class _CreateJobState extends State<CreateJob>{
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
-                  ], 
+                    SizedBox(height: 200,),
+                  ],
                 ),
               ),
             )
@@ -363,10 +427,35 @@ class _CreateJobState extends State<CreateJob>{
     );
   }
   Future<void> createJob() async {
-    if(titleController.text.isNotEmpty && contentController.text.isNotEmpty){
-      Navigator.push(context,
-          MaterialPageRoute(
-              builder: (context) => EmployerHome()));
+    if(titleController.text.isNotEmpty &&
+        contentController.text.isNotEmpty &&
+        salaryController.text.isNotEmpty &&
+        startDateController.text.isNotEmpty &&
+        endDateController.text.isNotEmpty &&
+        startTimeController.text.isNotEmpty &&
+        jobStatusController.text.isNotEmpty
+    ){
+      var response = await http.post(Uri.parse("http://192.168.0.136:8000/api/createJob"),
+          body: ({
+            'job_title':titleController.text,
+            'job_content':contentController.text,
+            'total_payment':salaryController.text,
+            'startDate_at':startDateController.text,
+            'endDate_at':endDateController.text,
+            'startTime_at':startTimeController.text,
+            'job_status':jobStatusController.text
+          }));
+      print(response.body);
+      if(response.statusCode==201){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Job is created! Pending admin Verify")));
+        Navigator.push(context,
+            MaterialPageRoute(
+                builder: (context) => EmployerHome()));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content:
+            Text("Invalid Credentials")));
+      }
     }else{
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Blank Fields Not Allowed")));
     }

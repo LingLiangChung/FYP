@@ -459,6 +459,7 @@ class _JobseekerRegisterState extends State<JobseekerRegister> {
           }));
       print(response.body);
       if(response.statusCode==201){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Register Successful")));
         Navigator.push(context,
             MaterialPageRoute(
                 builder: (context) => JobseekerLogin()));

@@ -25,9 +25,6 @@ class JobsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'employer_id' => 'required',
-            'jobseeker_id' => 'required',
-            'payment_id' => 'required',
             'job_title' => 'required',
             'job_content' => 'required',
             'total_payment' => 'required',
@@ -35,8 +32,6 @@ class JobsController extends Controller
             'endDate_at' => 'required',
             'startTime_at' => 'required',
             'job_status' => 'required',
-            'job_verification' => 'required',
-            
         ]);
         return Job::create($request->all());
     }

@@ -38,7 +38,7 @@ Route::get('/all_jobs', [JobsController::class,'index']);
 Route::post('/createJob', [JobsController::class,'store']);
 Route::resource('search_id', JobsController::class);
 Route::get('/search_jobs/{name}', [JobsController::class, 'search']);
-Route::put('/jobs/{$id}', [JobsController::class,'update']);
+Route::post('/jobs/{$id}', [JobsController::class,'update']);
 
 // Public routes - Employers
 Route::post('/employer_register', [EmployerAuthController::class,'register']);

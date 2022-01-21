@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
-import 'package:jobnow_users/screens/employer/chat_room.dart';
+import 'package:jobnow_users/screens/employer/chat/chat_room.dart';
 import 'package:jobnow_users/services/http_service.dart';
-
 import 'make_payment.dart';
 
 class JobsStatusDetail extends StatelessWidget {
@@ -15,8 +14,12 @@ class JobsStatusDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
           backgroundColor: kAppbarColor,
-          title: Text("Job Status Detail"),
+          title: Text('Job Status Details', style: TextStyle(color: Colors.white),),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -296,6 +299,7 @@ class JobsStatusDetail extends StatelessWidget {
                           TextButton(
                             onPressed: () async{
                               await httpService.deleteJob(job.id);
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Job is Cancel")));
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => EmployerChatRoom(),

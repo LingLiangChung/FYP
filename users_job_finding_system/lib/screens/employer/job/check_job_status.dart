@@ -13,8 +13,12 @@ class CheckJobStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text("Jobs Status"),
+        title: Text('Job Status', style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: httpService.getJobs(),

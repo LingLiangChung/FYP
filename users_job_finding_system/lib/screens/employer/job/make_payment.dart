@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobnow_users/screens/employer/employer_home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../constants.dart';
 import 'confirm_payment.dart';
 
 final String phoneNum = "123456789";
@@ -79,8 +80,11 @@ class MakePayment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFAB47BC),
-        title: Text('Pay Salary'),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        backgroundColor: kAppbarColor,
+        title: Text('Pay Salary', style: TextStyle(color: Colors.white),),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -115,7 +119,7 @@ class MakePayment extends StatelessWidget {
                             color: Colors.white
                         )),
                     style: TextButton.styleFrom(
-                      backgroundColor: Color(0xFFAB47BC),
+                      backgroundColor: kAppbarColor,
                     ),
                   ),
                 ],

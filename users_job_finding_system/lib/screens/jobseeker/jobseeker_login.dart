@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
-import 'package:jobnow_users/screens/employer/employer_home.dart';
+import 'package:jobnow_users/models/AuthReceiver.dart';
 import 'package:jobnow_users/selections.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'jobseeker_home.dart';
 
 class JobseekerLogin extends StatefulWidget {
@@ -187,6 +189,7 @@ class _JobseekerLoginState extends State<JobseekerLogin> {
     );
   }
   Future<void> login() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     if(passController.text.isNotEmpty && nameController.text.isNotEmpty){
       var response = await http.post(Uri.parse("http://192.168.0.136:8000/api/jobseeker_login"),
           body: ({
@@ -194,6 +197,10 @@ class _JobseekerLoginState extends State<JobseekerLogin> {
             'password':passController.text,
           }));
       if(response.statusCode==201){
+        AuthReceiver? authReceiver = AuthReceiver.fromJson(jsonDecode(response.body));
+        sharedPreferences.setInt("userID", authReceiver.jobseeker!.id!);
+        sharedPreferences.setString("userToken", authReceiver.token!);
+
         Navigator.push(context,
             MaterialPageRoute(
                 builder: (context) => JobseekerHome()));

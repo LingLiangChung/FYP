@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobseeker_model.dart';
-import 'package:jobnow_users/screens/employer/chat_room.dart';
+import 'package:jobnow_users/screens/employer/chat/chat_room.dart';
 import 'package:jobnow_users/services/http_service.dart';
 
 import '../employer_home.dart';
@@ -16,8 +16,12 @@ class JobseekerDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
           backgroundColor: kAppbarColor,
-          title: Text("Jobseeker Details"),
+          title: Text('Jobseeker Detail', style: TextStyle(color: Colors.white),),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Padding(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
 import 'package:jobnow_users/models/jobs_model.dart';
 import 'package:jobnow_users/services/http_service.dart';
-
 import 'job_detail.dart';
 
 class ManageJob extends StatelessWidget {
@@ -12,8 +11,12 @@ class ManageJob extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text("Jobs Management"),
+        title: Text('Jobs List', style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: httpService.getJobs(),

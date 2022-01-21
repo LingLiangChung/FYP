@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobnow_users/constants.dart';
+import 'package:jobnow_users/screens/employer/chat/screens/chat_page.dart';
 import 'package:jobnow_users/screens/jobseeker/jobs/apply_job.dart';
 import 'package:jobnow_users/screens/jobseeker/jobseeker_home.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -7,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 final String phoneNum = "123456789";
 
 launchEmail() async {
-  launch("mailto:liangjun487@gmail.com?subject=Job Application&body=I am very interested in accepting this job%20plugin");
+  launch("mailto:liangjun487@gmail.com?subject=Job Application&body=I am very interested in accepting this job%20");
 }
 
 Widget cardEmail(BuildContext context){
@@ -35,10 +36,14 @@ Widget cardEmail(BuildContext context){
   );
 }
 
-Widget cardPhoneCall(BuildContext context){
+Widget cardChatRoom(BuildContext context){
   return InkWell(
     onTap: (){
-      launch('tel:+12 3456789122');
+      Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ChatPage(),
+          )
+      );
     },
     child: Card(
       shape: RoundedRectangleBorder(
@@ -49,11 +54,11 @@ Widget cardPhoneCall(BuildContext context){
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.phone,
+            Icons.message,
             color: Colors.black,
             size: 100,
           ),
-          Text('Phone Call'),
+          Text('Chat Room'),
         ],
       ),              
     ),
@@ -68,8 +73,11 @@ class JobseekerApplyChatRoom extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: kAppbarColor,
-        title: Text('Job Confirmation'),
+        title: Text('Job Confirmation', style: TextStyle(color: Colors.white),),
         centerTitle: true,
       ),
       body: Stack(
@@ -102,7 +110,7 @@ class JobseekerApplyChatRoom extends StatelessWidget {
                   crossAxisCount: 2,
                   children: [
                     cardEmail(context),
-                    cardPhoneCall(context),
+                    cardChatRoom(context),
                   ],
                 ),
               ),
@@ -119,7 +127,7 @@ class JobseekerApplyChatRoom extends StatelessWidget {
                     },
                     child: Text('Confirm Apply Job',
                         style: TextStyle(
-                            color: kTextColor
+                            color: Colors.white
                         )),
                     style: TextButton.styleFrom(
                         backgroundColor: kApproveColor
