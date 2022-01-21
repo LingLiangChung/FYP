@@ -7,7 +7,7 @@ import '../body.dart';
 final String phoneNum = "123456789";
 
 launchEmail() async {
-  launch("mailto:employer@gmail.com?subject=Job Verification Result&body=Your job is approve%20plugin");
+  launch("mailto:employer@gmail.com?subject=Job Verification Result&body=Your job is approve%20");
 }
 
 Widget cardEmail(BuildContext context){
@@ -28,7 +28,7 @@ Widget cardEmail(BuildContext context){
             color: Colors.black,
             size: 100,
           ),
-          Text('via Email'),
+          Text('Email'),
         ],
       ),
     ),
@@ -38,7 +38,7 @@ Widget cardEmail(BuildContext context){
 Widget cardPhoneCall(BuildContext context){
   return InkWell(
     onTap: (){
-      launch('sms:+12 3456789122?body=Your job is approved');
+      launch('sms:+12 3456?body=Your job is approved');
     },
     child: Card(
       shape: RoundedRectangleBorder(
@@ -53,7 +53,7 @@ Widget cardPhoneCall(BuildContext context){
             color: Colors.black,
             size: 100,
           ),
-          Text('via SMS'),
+          Text('SMS'),
         ],
       ),
     ),

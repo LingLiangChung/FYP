@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobnow_version_1/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../body.dart';
@@ -27,7 +28,7 @@ Widget cardEmail(BuildContext context){
             color: Colors.black,
             size: 100,
           ),
-          Text('via Email'),
+          Text('Email'),
         ],
       ),
     ),
@@ -37,7 +38,7 @@ Widget cardEmail(BuildContext context){
 Widget cardPhoneCall(BuildContext context){
   return InkWell(
     onTap: (){
-      launch('sms:+12 3456789122?body=Your job is rejected');
+      launch('sms:+12 3456?body=Your job is rejected');
     },
     child: Card(
       shape: RoundedRectangleBorder(
@@ -52,7 +53,7 @@ Widget cardPhoneCall(BuildContext context){
             color: Colors.black,
             size: 100,
           ),
-          Text('via SMS'),
+          Text('SMS'),
         ],
       ),
     ),
@@ -65,7 +66,7 @@ class SendRejectNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: kAppbarColor,
         title: Text('Send Notification'),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -101,7 +102,7 @@ class SendRejectNotification extends StatelessWidget {
                             color: Colors.white
                         )),
                     style: TextButton.styleFrom(
-                      backgroundColor: Color(0xFFAB47BC),
+                      backgroundColor: kApproveColor,
                     ),
                   ),
                 ],
